@@ -1,9 +1,6 @@
-FROM harbor.corp.local/bitnami/nginx:1.11-alpine
+FROM harbor.ocplab.cn/bitnami/nginx:1.19.2-debian-10-r32
 
 # Add 2048 stuff into Nginx server
-COPY . /usr/share/nginx/html
+COPY . /app
 
-EXPOSE 80
-
-# Start Nginx and keep it running background and start php
-CMD sed -i "s/ContainerID: /ContainerID: "$(hostname)"/g" /usr/share/nginx/html/index.html && nginx -g "daemon off;"
+EXPOSE 8080
